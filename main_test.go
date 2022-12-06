@@ -25,7 +25,7 @@ import (
 
 // var _ = os.Setenv("DATABASE_URL", "postgres://postgres:postgres@localhost:5432/kampusmerdeka")
 
-var _ = os.Setenv("DATABASE_URL", "postgres://postgres:082388386923@localhost:5432/rg_camp")
+var _ = os.Setenv("DATABASE_URL", "postgres://postgres:082388386923@localhost:5432/rg_camp_test")
 
 func SetCookie(mux *http.ServeMux) *http.Cookie {
 	login := entity.UserLogin{

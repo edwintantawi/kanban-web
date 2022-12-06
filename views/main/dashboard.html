@@ -3,11 +3,11 @@
   <head>
     {{template "general/header"}}
   </head>
-  <body class="bg-primary-soft text-white h-full">
+  <body class="bg-primary-deep bg-mesh text-white h-full">
     <div class="flex flex-col h-screen">
-      <div class="flex items-center flex-shrink-0 justify-between w-full h-16 px-10 bg-white sticky top-0">
+      <div class="flex items-center flex-shrink-0 justify-between w-full h-16 px-10 bg-white/10 sticky top-0">
         <svg
-          class="w-8 h-8 text-primary-deep stroke-current"
+          class="w-8 aspect-square text-white stroke-current"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -42,49 +42,56 @@
             {{range $categoryIndex, $category := .categories}}
             {{$categoryLength := len $.categories}}
               <section class="block w-[360px] flex-shrink-0">
-                <header class="flex items-center justify-between py-4 mb-2 sticky top-0 bg-primary-soft">
-                  <h2 class="flex items-center gap-2">{{$category.Type}} <span class="inline-block bg-primary-deep py-0.5 px-2 text-xs rounded-full">{{len $category.Tasks}}</span></h2>
-                  <div class="flex items-center gap-2">
-                    <a
-                      href="/task/add?category={{$category.ID}}"
-                      title="Add new task"
-                      class="inline-block hover:bg-primary-deep/10 rounded-md p-1"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-5 aspect-square"
+                <header class="pb-4 bg-transparent bg-blend-soft-light">
+                  <div class="flex items-center justify-between p-4 bg-white text-primary-deep rounded-lg gap-4">
+                    <h2 class="flex items-center gap-2">
+                      {{$category.Type}}
+                      <span class="inline-block text-white bg-primary-deep py-0.5 px-2 text-xs rounded-full">
+                        {{len $category.Tasks}}
+                      </span>
+                    </h2>
+                    <div class="flex items-center gap-2">
+                      <a
+                        href="/task/add?category={{$category.ID}}"
+                        title="Add new task"
+                        class="inline-block hover:bg-primary-deep/10 rounded-md p-1"
                       >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M12 4.5v15m7.5-7.5h-15"
-                        />
-                      </svg>
-                    </a>
-                    <a
-                      href="/category/delete?category_id={{$category.ID}}"
-                      title="Delete category"
-                      class="inline-block hover:bg-primary-deep/10 rounded-md p-1"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-5 aspect-square"
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 aspect-square"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M12 4.5v15m7.5-7.5h-15"
+                          />
+                        </svg>
+                      </a>
+                      <a
+                        href="/category/delete?category_id={{$category.ID}}"
+                        title="Delete category"
+                        class="inline-block hover:bg-red-600/10 rounded-md p-1"
                       >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </a>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 aspect-square text-red-600"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </header>
                 <ul class="space-y-4 overflow-auto h-full">
@@ -163,36 +170,18 @@
                         <hr class="border-t mt-4 mb-3" />
                         <p class="text-gray-500">{{$task.Description}}</p>
                         <footer
-                          class="hidden group-hover:flex mt-4 border-t pt-3 gap-4 justify-between"
+                          class="transition-all duration-300 h-0 group-hover:h-11 group-hover:mt-4 flex items-center flex-1"
                         >
-                          {{$prevIndex := categoryDec $categoryIndex}}
-                          {{if eq $prevIndex -1}}
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="w-6 aspect-square text-gray-300 cursor-not-allowed"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
-                              />
-                            </svg>
-                          {{else}}
-                            <a
-                              href="/task/update/process?task_id={{$task.ID}}&category_id={{(index $.categories $prevIndex).ID}}"
-                              class="p-1 hover:bg-primary-deep/10 rounded-md"
-                            >
+                          <div class=" flex gap-4 justify-between flex-1 opacity-0 group-hover:opacity-100 group-hover:border-t group-hover:pt-3 transition-all">
+                            {{$prevIndex := categoryDec $categoryIndex}}
+                            {{if eq $prevIndex -1}}
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke-width="1.5"
                                 stroke="currentColor"
-                                class="w-6 aspect-square"
+                                class="w-6 aspect-square text-gray-300 cursor-not-allowed"
                               >
                                 <path
                                   stroke-linecap="round"
@@ -200,37 +189,37 @@
                                   d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
                                 />
                               </svg>
-                            </a>
-                          {{end}}
+                            {{else}}
+                              <a
+                                href="/task/update/process?task_id={{$task.ID}}&category_id={{(index $.categories $prevIndex).ID}}"
+                                class="p-1 hover:bg-primary-deep/10 rounded-md"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke-width="1.5"
+                                  stroke="currentColor"
+                                  class="w-6 aspect-square"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+                                  />
+                                </svg>
+                              </a>
+                            {{end}}
 
-                          {{$nextIndex := categoryInc $categoryIndex}}
-                          {{if eq $nextIndex $categoryLength}}
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="w-6 aspect-square text-gray-300 cursor-not-allowed"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                              />
-                            </svg>
-                          {{else}}
-                            <a
-                              href="/task/update/process?task_id={{$task.ID}}&category_id={{(index $.categories $nextIndex).ID}}"
-                              class="p-1 hover:bg-primary-deep/10 rounded-md"
-                            >
+                            {{$nextIndex := categoryInc $categoryIndex}}
+                            {{if eq $nextIndex $categoryLength}}
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke-width="1.5"
                                 stroke="currentColor"
-                                class="w-6 aspect-square"
+                                class="w-6 aspect-square text-gray-300 cursor-not-allowed"
                               >
                                 <path
                                   stroke-linecap="round"
@@ -238,8 +227,28 @@
                                   d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
                                 />
                               </svg>
-                            </a>
-                          {{end}}
+                            {{else}}
+                              <a
+                                href="/task/update/process?task_id={{$task.ID}}&category_id={{(index $.categories $nextIndex).ID}}"
+                                class="p-1 hover:bg-primary-deep/10 rounded-md"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke-width="1.5"
+                                  stroke="currentColor"
+                                  class="w-6 aspect-square"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                                  />
+                                </svg>
+                              </a>
+                            {{end}}
+                          </div>
                         </footer>
                       </article>
                     </li>
@@ -248,10 +257,10 @@
               </section>
             {{end}}
             <section>
-              <div class="sticky top-0 mr-10 py-2">
+              <div class="mr-10">
                 <a
                 href="/category/add"
-                class="border border-gray-300 border-dashed rounded-lg mt-1 py-3 px-12 block hover:bg-white/5"
+                class="border border-gray-300 border-dashed rounded-lg py-4 px-12 block hover:bg-white/5"
               >
                 <p class="flex items-center justify-center gap-1 whitespace-nowrap">
                   <svg

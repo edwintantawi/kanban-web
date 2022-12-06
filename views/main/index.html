@@ -3,21 +3,37 @@
   <head>
     {{template "general/header"}}
   </head>
-  <body class="h-screen grid place-items-center bg-primary-soft">
+  <body class="h-screen grid place-items-center bg-primary-deep bg-mesh">
     <div class="py-6 px-8 rounded-lg m-4 border bg-white">
+      <div class="flex justify-center mb-4">
+        <svg
+          class="w-16 aspect-square text-primary-deep stroke-current"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+          />
+        </svg>
+      </div>
       <h1 class="font-bold text-4xl mb-8 text-primary-deep">
         Welcome to kanban app
       </h1>
       <div class="grid grid-cols-2 gap-4">
         <a
-          href="/login"
-          class="block border rounded-lg py-2 px-4 text-center border-primary-soft text-primary-deep"
-          >login</a
+          href="/register"
+          class="block border rounded-lg py-2 px-4 text-center bg-primary-soft text-white hover:bg-primary-soft/90"
+          >Register</a
         >
         <a
-          href="/register"
-          class="block border rounded-lg py-2 px-4 text-center bg-primary-soft text-white"
-          >Register</a
+          href="/login"
+          class="block border rounded-lg py-2 px-4 text-center border-primary-soft text-primary-deep hover:bg-primary-soft/10"
+          >login</a
         >
       </div>
     </div>
