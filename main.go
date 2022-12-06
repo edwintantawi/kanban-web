@@ -35,7 +35,8 @@ type ClientHandler struct {
 var Resources embed.FS
 
 func FlyURL() string {
-	return "" // TODO: replace this
+	// return "https://edwintantawi-be2625105.fly.dev" // TODO: replace this
+	return ""
 }
 
 func main() {
