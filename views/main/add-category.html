@@ -10,7 +10,7 @@
       action="/category/create"
       class="bg-white rounded-xl border border-gray-300 py-8 px-10 m-4 max-w-xl"
     >
-      <h1 class="text-3xl font-bold">Add new category</h1>
+      <h1 class="text-3xl font-bold text-primary-deep">Add new category</h1>
       <hr class="border border-gray-100 my-4" />
       <div class="mb-4">
         <label for="type" class="block mb-2">Title</label>
@@ -24,14 +24,16 @@
         />
       </div>
 
-      <div class="mt-8 flex justify-between items-center">
+      <div class="mt-8 grid grid-cols-2 gap-4">
         <button
           type="submit"
-          class="py-2 px-6 bg-primary-soft text-white font-semibold rounded-lg"
+          class="w-full py-2 px-6 bg-primary-soft text-white rounded-lg hover:bg-primary-soft/90"
         >
-          Add Category
+          Add category
         </button>
-        <a href="/dashboard" class="text-primary-deep">Back</a>
+        <a href="/dashboard" class="text-primary-deep w-full text-center block py-2 px-6 hover:bg-primary-soft/10 rounded-lg">
+          Back
+        </a>
       </div>
     </form>
   </body>

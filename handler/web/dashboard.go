@@ -55,6 +55,9 @@ func (d *dashboardWeb) Dashboard(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	// tmpl = tmpl.Funcs(funcMap)
-	tmpl.Execute(w, dataTemplate)
+
+	if err := tmpl.Execute(w, dataTemplate); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 }

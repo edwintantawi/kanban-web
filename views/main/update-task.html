@@ -11,7 +11,7 @@
       action="/task/update/process?task_id={{.ID}}"
       class="bg-white rounded-xl border border-gray-300 py-8 px-10 m-4 max-w-xl"
     >
-      <h1 class="text-3xl font-bold">Add new task</h1>
+      <h1 class="text-3xl font-bold text-primary-deep">Add new task</h1>
       <hr class="border border-gray-100 my-4" />
       <div class="mb-4">
         <label for="title" class="block mb-2">Title</label>
@@ -20,30 +20,33 @@
           name="title"
           id="title"
           value="{{.Title}}"
-          placeholder="Category title"
+          placeholder="Task title"
           class="py-2 px-4 border border-gray-300 rounded-lg w-full focus:outline-primary-deep"
         />
       </div>
       <div class="mb-4">
         <label for="description" class="block mb-2">Description</label>
-        <input
+        <textarea
           type="text"
           name="description"
           id="description"
-          value="{{.Description}}"
-          placeholder="Category description"
+          placeholder="Task description"
+          cols="42"
+          rows="8"
           class="py-2 px-4 border border-gray-300 rounded-lg w-full focus:outline-primary-deep"
-        />
+        >{{.Description}}</textarea>
       </div>
 
-      <div class="mt-8 flex justify-between items-center">
+      <div class="mt-8 grid grid-cols-2 gap-4">
         <button
           type="submit"
-          class="py-2 px-6 bg-primary-soft text-white font-semibold rounded-lg"
+          class="w-full py-2 px-6 bg-primary-soft text-white rounded-lg hover:bg-primary-soft/90"
         >
-          Update Task
+          Update task
         </button>
-        <a href="/dashboard" class="text-primary-deep">Back</a>
+        <a href="/dashboard" class="text-primary-deep w-full text-center block py-2 px-6 hover:bg-primary-soft/10 rounded-lg">
+          Back
+        </a>
       </div>
     </form>
   </body>
