@@ -1,0 +1,46 @@
+{{define "general/header"}}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+  rel="stylesheet"
+/>
+<title>Kanban App</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  /** @type {import('tailwindcss').Config} */
+  tailwind.config = {
+    theme: {
+      container: {
+        center: true,
+        padding: '2rem',
+        width: '100%',
+      },
+      extend: {
+        colors: {
+          primary: {
+            soft: '#3A54AA',
+            deep: '#071A84',
+          },
+        },
+      },
+      table: {},
+    },
+    variants: {
+      extend: {
+        backgroundColor: ['even'],
+      },
+    },
+  };
+</script>
+<style>
+  .group:hover .group-hover\:flex {
+    display: flex !important;
+  }
+  html, body {
+    height: 100%;
+  }
+</style>
+{{end}}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{template "general/header"}}
+  </head>
+  <body class="h-screen grid md:grid-cols-2">
+    <!-- TODO: answer here -->
+    <div class="bg-primary-soft grid place-items-center p-16">
+      <div>
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/edwintantawi-25f09.appspot.com/o/any%2Fkanban-illustration.svg?alt=media"
+          alt=""
+          class="w-full max-w-xl aspect-auto"
+        />
+        <p class="text-gray-300 text-center mt-4">
+          <a
+            href="https://www.freepik.com/free-vector/kanban-method-concept-illustration_28769277.htm#query=kanban%20ilustration&position=0&from_view=search&track=sph"
+            class="underline"
+            >Image by storyset</a
+          >
+          on Freepik
+        </p>
+      </div>
+    </div>
+
+    <form method="post" action="/register/process" class="bg-white py-8 w-full">
+      <div class="h-full flex flex-col justify-center p-8 max-w-md mx-auto">
+        <h1 class="text-4xl font-bold">Register</h1>
+        <hr class="border border-gray-100 my-4" />
+        <div class="mb-4">
+          <label for="fullname" class="block mb-2">Fullname</label>
+          <input
+            required
+            type="text"
+            name="fullname"
+            id="fullname"
+            placeholder="Gopher Golang"
+            class="py-2 px-4 border border-gray-300 rounded-lg w-full focus:outline-primary-soft"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block mb-2">Email</label>
+          <input
+            required
+            type="email"
+            name="email"
+            id="email"
+            placeholder="gopher@go.dev"
+            class="py-2 px-4 border border-gray-300 rounded-lg w-full focus:outline-primary-soft"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block mb-2">Password</label>
+          <input
+            required
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            class="py-2 px-4 border border-gray-300 rounded-lg w-full focus:outline-primary-soft"
+          />
+        </div>
+
+        <div class="mt-8 grid grid-cols-2 gap-4">
+          <button
+            type="submit"
+            class="py-2 px-6 bg-primary-soft text-white font-semibold rounded-lg block"
+          >
+            Register
+          </button>
+          <a
+            href="/login"
+            class="py-2 px-6 border border-primary-deep rounded-lg text-primary-deep block text-center"
+            >Login</a
+          >
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
