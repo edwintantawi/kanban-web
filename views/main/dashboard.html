@@ -31,20 +31,20 @@
         </div>
       </div>
 
-      <div class="overflow-x-auto flex-1">
+      <div class="overflow-hidden flex-1">
         <div class="px-10 mt-6">
           <h1 class="text-2xl font-bold">Kanban App</h1>
         </div>
 
         <!-- TODO: answer here -->
-        <div class="px-10">
-          <div class="flex gap-8 mt-6">
+        <div class="px-10 h-[calc(100%-100px)]">
+          <div class="flex gap-2 mt-6 h-full overflow-x-auto scrollbar scrollbar-h pb-5">
             {{range $categoryIndex, $category := .categories}}
             {{$categoryLength := len $.categories}}
               <section class="block w-[360px] flex-shrink-0">
-                <header class="pb-4 bg-transparent bg-blend-soft-light">
-                  <div class="flex items-center justify-between p-4 bg-white text-primary-deep rounded-lg gap-4">
-                    <h2 class="flex items-center gap-2">
+                <header class="mb-4 mr-3">
+                  <div class="flex items-center justify-between px-4 py-2 bg-white text-primary-deep rounded-lg gap-4">
+                    <h2 class="flex items-center gap-2 text-sm">
                       {{$category.Type}}
                       <span class="inline-block text-white bg-primary-deep py-0.5 px-2 text-xs rounded-full">
                         {{len $category.Tasks}}
@@ -62,7 +62,7 @@
                           viewBox="0 0 24 24"
                           stroke-width="1.5"
                           stroke="currentColor"
-                          class="w-6 aspect-square"
+                          class="w-5 aspect-square"
                         >
                           <path
                             stroke-linecap="round"
@@ -82,7 +82,7 @@
                           viewBox="0 0 24 24"
                           stroke-width="1.5"
                           stroke="currentColor"
-                          class="w-6 aspect-square text-red-600"
+                          class="w-5 aspect-square text-red-600"
                         >
                           <path
                             stroke-linecap="round"
@@ -94,7 +94,7 @@
                     </div>
                   </div>
                 </header>
-                <ul class="space-y-4 overflow-auto h-full">
+                <ul class="space-y-4 overflow-y-scroll h-[calc(100%-64px)] pr-2 scrollbar scrollbar-v">
                   {{$tasksLength := len $category.Tasks}}
                   {{if eq $tasksLength 0}} 
                     <li>
@@ -102,7 +102,7 @@
                         href="/task/add?category={{$category.ID}}"
                         class="border border-gray-300 border-dashed rounded-lg py-3 px-4 block hover:bg-white/5"
                       >
-                        <p class="flex items-center justify-center gap-1">
+                        <p class="flex items-center justify-center gap-1 text-sm">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -125,10 +125,10 @@
                   {{range $index, $task := $category.Tasks}}
                     <li>
                       <article
-                        class="group bg-white rounded-lg py-4 px-6 block text-primary-deep"
+                        class="group bg-white rounded-lg p-4 block text-primary-deep"
                       >
                         <header class="flex items-center gap-4">
-                          <h3 class="text-xl font-semibold flex-1">
+                          <h3 class="font-semibold flex-1">
                             {{$task.Title}}
                           </h3>
 
@@ -167,10 +167,10 @@
                             </a>
                           </div>
                         </header>
-                        <hr class="border-t mt-4 mb-3" />
-                        <p class="text-gray-500">{{$task.Description}}</p>
+                        <hr class="border-t mt-2 mb-3" />
+                        <p class="text-gray-500 text-sm">{{$task.Description}}</p>
                         <footer
-                          class="transition-all duration-300 h-0 group-hover:h-11 group-hover:mt-4 flex items-center flex-1"
+                          class="transition-all duration-300 h-0 group-hover:h-8 group-hover:mt-4 flex items-center flex-1"
                         >
                           <div class=" flex gap-4 justify-between flex-1 opacity-0 group-hover:opacity-100 group-hover:border-t group-hover:pt-3 transition-all">
                             {{$prevIndex := categoryDec $categoryIndex}}
@@ -181,7 +181,7 @@
                                 viewBox="0 0 24 24"
                                 stroke-width="1.5"
                                 stroke="currentColor"
-                                class="w-6 aspect-square text-gray-300 cursor-not-allowed"
+                                class="w-5 aspect-square text-gray-300 cursor-not-allowed"
                               >
                                 <path
                                   stroke-linecap="round"
@@ -200,7 +200,7 @@
                                   viewBox="0 0 24 24"
                                   stroke-width="1.5"
                                   stroke="currentColor"
-                                  class="w-6 aspect-square"
+                                  class="w-5 aspect-square"
                                 >
                                   <path
                                     stroke-linecap="round"
@@ -219,7 +219,7 @@
                                 viewBox="0 0 24 24"
                                 stroke-width="1.5"
                                 stroke="currentColor"
-                                class="w-6 aspect-square text-gray-300 cursor-not-allowed"
+                                class="w-5 aspect-square text-gray-300 cursor-not-allowed"
                               >
                                 <path
                                   stroke-linecap="round"
@@ -238,7 +238,7 @@
                                   viewBox="0 0 24 24"
                                   stroke-width="1.5"
                                   stroke="currentColor"
-                                  class="w-6 aspect-square"
+                                  class="w-5 aspect-square"
                                 >
                                   <path
                                     stroke-linecap="round"
@@ -260,9 +260,9 @@
               <div class="mr-10">
                 <a
                 href="/category/add"
-                class="border border-gray-300 border-dashed rounded-lg py-4 px-12 block hover:bg-white/5"
+                class="border border-gray-300 border-dashed rounded-lg py-[10px] px-12 block hover:bg-white/5"
               >
-                <p class="flex items-center justify-center gap-1 whitespace-nowrap">
+                <p class="flex items-center justify-center gap-1 whitespace-nowrap text-sm">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
